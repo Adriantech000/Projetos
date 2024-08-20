@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+
+  int vari1;
+  int vari2;
+
+  printf("coloque a primeira variavel: \n");
+  scanf("%d", &vari1);
+  printf("coloque a segunda variavel: \n");
+  scanf("%d", &vari2);
+
+  int tempo = vari1;
+
+  vari1 = vari2;
+  vari2 = tempo; 
+
+  printf("A habiliade da sakanade é inverter tudo! então:\n\n vairavel 1: %d\n variavel 2: %d", vari1, vari2);
+
+  return 0;
+}
