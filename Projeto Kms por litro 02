@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main(void) {
+
+// informaçoes nessesarias: tempo gasto, velocidade media
+
+int tempo;
+int velocidade_m;
+int distancia;
+int litros;
+
+  printf("qual o tempo gasto?:\n");
+  scanf("%d", &tempo);
+  printf("qual a velocidade media?\n:");
+  scanf("%d", &velocidade_m);
+
+  distancia = (tempo * velocidade_m);
+
+  printf("quantos litros foram usados?\n");
+  scanf("%d", &litros);
+
+  litros = (distancia / 12);
+
+  printf("O tempo da viagem foi: %d\n", tempo);
+  printf("A velocidade média foi: %d Km/h\n", velocidade_m);
+  printf("A distancia percorrida foi de: %d Km\n", distancia);
+  printf("A quantidade de litros usada foi: %d\n", litros);
+  
+ 
+  return 0;
+}
