@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main(void) {
+  //essa é a primeira atividade
+
+  float celcius;
+  float faren;
+
+  printf("fale a temperatura em graus celcius:\n");
+  scanf("%f", &celcius);
+  faren = (9 * celcius + 160) / 5;
+
+  if (faren <= 60) {
+    printf("ta frio");
+  }
+
+  printf("a temperatura em farenrainten é: %f", faren);
+
