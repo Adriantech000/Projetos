@@ -1,0 +1,18 @@
+include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+  int tempo, taxa;
+  float valor, prestacao, teste;
+  
+  printf("Digite o tempo (em meses): ");
+  scanf("%d", &tempo);
+  printf("Digite a taxa de juros (em %): ");
+  scanf("%d", &taxa);
+  printf("Digite o valor inicial: ");
+  scanf("%f", &valor);
+
+  teste = taxa/100;
+  prestacao = valor +(valor * teste * tempo);
+
+   printf("O valor da prestação é: %.2f\n", prestacao);
