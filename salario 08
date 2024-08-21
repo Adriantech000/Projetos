@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+
+  float salario;
+  float ajuste;
+  float val_aumento;
+  float novo_sal;
+
+  printf("qual o salario?\n");
+  scanf("%f", &salario);
+
+  printf("qual o persentual do ajuste?\n");
+  scanf("%f", &ajuste);
+
+  val_aumento = salario * ajuste/100;
+  novo_sal = salario + val_aumento;
+  
+  printf("o valor ajustado é: %.2f", novo_sal);
+
+  
+  return 0;
+}
