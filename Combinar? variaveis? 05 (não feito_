@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+
+  int numero1;
+  int numero2;
+  int numero3;
+  int numero4;
+  
+
+  printf("Numero 1\n");
+  scanf("%d", &numero1);
+  printf("Numero 2\n");
+  scanf("%d", &numero2);
+  printf("Numero 3\n");
+  scanf("%d", &numero3);
+  printf("Numero 4\n");
+  scanf("%d", &numero4);
+
+  
+
+   return 0;
+  }
