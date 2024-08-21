@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+
+  int vari1, vari2;
+  int vari1_quadrada, vari2_quadada;
+  
+  printf("coloque a primeira variavel: \n");
+  scanf("%d", &vari1);
+  printf("coloque a segunda variavel: \n");
+  scanf("%d", &vari2);
+
+  
+  vari1_quadrada = vari1 * vari1;
+  vari2_quadada = vari2 * vari2;
+  printf("variavel 1 ao quadrado: %d\n", vari1_quadrada);
+  printf("variavel 2 ao quadrado: %d\n", vari2_quadada);
+
+  
+  return 0;
+}
