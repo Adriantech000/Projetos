@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+
+  float real;
+  float cotdolar;
+  float valdolar;
+
+  printf("Qual a cotação atual do dolar?\n");
+  scanf("%f", &cotdolar);
+  printf("Qual a quantia?\n");
+  scanf("%f", &valdolar);
+
+  real = valdolar * cotdolar;
+
+   printf("%.2f dólares equivalem a %.2f reais.\n", valdolar, real);
+  
+  return 0;
+}
+
