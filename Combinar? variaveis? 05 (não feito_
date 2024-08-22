@@ -2,22 +2,51 @@
 #include <stdlib.h>
 int main() {
 
-  int numero1;
-  int numero2;
-  int numero3;
-  int numero4;
+  int numero[5];
+  int soma[7];
+  int multi[7];
+
+  printf("Numero A\n");
+  scanf("%d", &numero[1]);
+  printf("Numero B\n");
+  scanf("%d", &numero[2]);
+  printf("Numero C\n");
+  scanf("%d", &numero[3]);
+  printf("Numero D\n");
+  scanf("%d", &numero[4]);
   
+//começando as somas
+  soma[1] = numero[1] + numero[2];
+  soma[2] = numero[1] + numero[3];
+  soma[3] = numero[1] + numero[4];
+  soma[4] = numero[2] + numero[3];
+  soma[5] = numero[2] + numero[4];
+  soma[6] = numero[3] + numero[4];
 
-  printf("Numero 1\n");
-  scanf("%d", &numero1);
-  printf("Numero 2\n");
-  scanf("%d", &numero2);
-  printf("Numero 3\n");
-  scanf("%d", &numero3);
-  printf("Numero 4\n");
-  scanf("%d", &numero4);
+  //começando a muiltiplicação
+  multi[1] = numero[1] * numero[2];
+  multi[2] = numero[1] * numero[3];
+  multi[3] = numero[1] * numero[4];
+  multi[4] = numero[2] * numero[3];
+  multi[5] = numero[2] * numero[4];
+  multi[6] = numero[3] * numero[4];
 
-  
+  printf("a soma 1 deu: %d\n", soma[1]);
+  printf("a soma 2 deu: %d\n", soma[3]);
+  printf("a soma 3 deu: %d\n", soma[4]);
+  printf("a soma 4 deu: %d\n", soma[5]);
+  printf("a soma 4 deu: %d\n", soma[6]);
 
+  printf("a multiplicação 1 deu: %d\n", multi[1]);
+  printf("a multiplicação 2 deu: %d\n", multi[3]);
+  printf("a multiplicação 3 deu: %d\n", multi[4]);
+  printf("a multiplicação 4 deu: %d\n", multi[5]);
+  printf("a multiplicação 4 deu: %d\n", multi[6]);
+ 
    return 0;
   }
+
+
+
+
+
