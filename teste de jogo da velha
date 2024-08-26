@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+
+char decisao1[2];
+char a1, a2, a3;
+
+printf("escolha a posição:\n  1 2 3\na -,-,-\nb -,-,-\nc -,-,-\n");
+scanf("%s", &decisao1);
+
+if (strcmp(decisao1, "a1") == 0){
+    printf("x,-,-\n-,-,-\n-,-,-\n");
+}
+else if (strcmp(decisao1, "a2") == 0){
+    printf("-,x,-\n-,-,-\n-,-,-\n");
+}
+else if (strcmp(decisao1, "a3") == 0){
+   printf("-,-,x\n-,-,-\n-,-,-\n");
+}
+else if (strcmp(decisao1, "b1") == 0){
+   printf("-,-,-\nx,-,-\n-,-,-\n");
+}
+else if (strcmp(decisao1, "b2") == 0){
+   printf("-,-,-\n-,x,-\n-,-,-\n");
+}
+else if (strcmp(decisao1, "b3") == 0){
+   printf("-,-,-\n-,-,x\n-,-,-\n");
+}
+else if (strcmp(decisao1, "c1") == 0){
+   printf("-,-,-\n-,-,-\nx,-,-\n");
+}
+else if (strcmp(decisao1, "c2") == 0){
+   printf("-,-,-\n-,-,-\n-,x,-\n");
+}
+else if (strcmp(decisao1, "c3") == 0){
+   printf("-,-,-\n-,-,-\n-,-,x\n");
+}
+else{
+   printf("está não é uma opção");
+}
+
+
+
+}
