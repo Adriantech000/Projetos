@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+   int decisao1, media;
+   int trab1, prova1, faltas;
+    
+    printf("fale a nota da primeiro trabalho (0 a 2)\n");
+    scanf("%d", &trab1);
+    printf("fale a nota da primeira prova (0 a 8)\n");
+    scanf("%d", &prova1);
+    printf("qual a quantidade de faltas? (0 a 50)\n");
+    scanf("%d", &faltas);
+    
+    //calcular media!
+    media = (trab1 + prova1)/2;
+    printf("a nota é %d\n\n", media);
+
+    printf("oque voce que ver?\n1-media final\n2-mostrar se o aluno passou\n3- ver se o numero é impar e se é multiplo de 5.\n");
+    scanf("%d", decisao1);
+    
+    switch (decisao1){
+        case 1:
+        printf("a media é %d", media);
+        break;
+    }
+    
+    
+    
