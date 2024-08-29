@@ -67,9 +67,12 @@ int main(){
     
     printf("VEZ DO JOGADOR 2\n");
     
-    printf("%s,%s,%s\n", posicao_a1, posicao_a2, posicao_a3);
-    printf("%s,%s,%s\n", posicao_b1, posicao_b2, posicao_b3);
-    printf("%s,%s,%s\n", posicao_c1, posicao_c2, posicao_c3);
+    printf("   1   2   3\n");
+    printf("A  %s | %s | %s\n", posicao_a1, posicao_a2, posicao_a3);
+    printf("  ----------\n");
+    printf("B  %s | %s | %s\n", posicao_b1, posicao_b2, posicao_b3);
+    printf("  ----------\n");
+    printf("C  %s | %s | %s\n", posicao_c1, posicao_c2, posicao_c3);
     
     printf("faça a jogada!\n");
     scanf("%s", &jogada1);
