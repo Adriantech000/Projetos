@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h1> Primeiro passo com HTML!</h1>
+    <hr>
+    <h2> Indice</h2>
+<ul>
+    <li> <a href= '#historia'>Historia dos computadores</a></li>
+    <li> <a href= '#Clients'>Oque são?</a></li>
+    <li> <a href= '#Servers'>Oque são?</a></li>
+    <li> <a href= '#Estrutura'>Como é uma estrutura basica no HTML?</a></li>
+</ul>
+
+<h2 id="historia">Histora dos computadores</h2>
+<p>
+    Os computadores foram criados em </br>
+    </br>
+</p>
+</body>
+</html>
