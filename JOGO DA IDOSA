@@ -25,8 +25,56 @@ int main(){
     printf("  ----------\n");
     printf("C  %s | %s | %s\n", posicao_c1, posicao_c2, posicao_c3);
     
-    printf("faça a jogada!\n");
+    printf("faca a jogada!\n");
     scanf("%s", &jogada1);
+
+    if (strcmp(posicao_a1, "0")==0){
+        printf("Essa posicao ja foi tomada.\n");
+        (strcmp(jogada1, "a1") == 0);
+            strcpy(posicao_a1, "-");}
+            
+        else if (strcmp(posicao_a2, "0")==0){
+        printf("Essa posicao ja foi tomada.\n");
+        (strcmp(jogada1, "a1") == 0);
+            strcpy(posicao_a2, "-");}
+            
+        else if (strcmp(posicao_a3, "0")==0){
+        printf("Essa posicao ja foi tomada.\n");
+        (strcmp(jogada1, "a1") == 0);
+            strcpy(posicao_a3, "-");}
+            
+        else if (strcmp(posicao_b1, "0")==0){
+        printf("Essa posicao ja foi tomada.\n");
+        (strcmp(jogada1, "a1") == 0);
+            strcpy(posicao_b1, "-");}
+            
+        else if (strcmp(posicao_b2, "0")==0){
+        printf("Essa posicao ja foi tomada.\n");
+        (strcmp(jogada1, "a1") == 0);
+            strcpy(posicao_b2, "-");}
+            
+        else if (strcmp(posicao_b3, "0")==0){
+        printf("Essa posicao ja foi tomada.\n");
+        (strcmp(jogada1, "a1") == 0);
+            strcpy(posicao_b3, "-");}
+            
+        else if (strcmp(posicao_c1, "0")==0){
+        (strcmp(jogada1, "a1") == 0);
+            strcpy(posicao_c1, "-");
+            printf("Essa posicao ja foi tomada.");
+        }
+            
+        else if (strcmp(posicao_c2, "0")==0){
+        (strcmp(jogada1, "a1") == 0);
+            strcpy(posicao_c2, "-");
+            printf("Essa posicao ja foi tomada.");
+        }
+            
+        else if (strcmp(posicao_c3, "0")==0){
+        printf("Essa posicao ja foi tomada.\n");
+        (strcmp(jogada1, "a1") == 0);
+            strcpy(posicao_c3, "-");}
+            else{
     
     
     if (strcmp(jogada1, "a1") == 0) {
@@ -59,6 +107,7 @@ int main(){
     else{
         printf("isso não é uma jogada!\n");
     }
+            }
     
     if ((strcmp(posicao_a1, "X") == 0 && strcmp(posicao_a2, "X") == 0 && strcmp(posicao_a3, "X") == 0) || 
     (strcmp(posicao_b1, "X") == 0 && strcmp(posicao_b2, "X") == 0 && strcmp(posicao_b3, "X") == 0) || 
@@ -81,7 +130,7 @@ int main(){
     printf("  ----------\n");
     printf("C  %s | %s | %s\n", posicao_c1, posicao_c2, posicao_c3);
     
-    printf("faça a jogada!\n");
+    printf("faca a jogada!\n");
     scanf("%s", &jogada1);
     
     
