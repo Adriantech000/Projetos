@@ -60,8 +60,15 @@ int main(){
         printf("isso não é uma jogada!\n");
     }
     
-    if(posicao_a1 == "X" && posicao_a2 == "X" && posicao_a3 == "X" || posicao_a1 == "X" && posicao_a2 == "X" && posicao_a3 == "X" || posicao_b1 == "X" && posicao_b2 == "X" && posicao_b3 == "X" || posicao_c1 == "X" && posicao_c2 == "X" && posicao_c3 == "X"){
-        printf("O X GANHOU!");
+    if ((strcmp(posicao_a1, "X") == 0 && strcmp(posicao_a2, "X") == 0 && strcmp(posicao_a3, "X") == 0) || 
+    (strcmp(posicao_b1, "X") == 0 && strcmp(posicao_b2, "X") == 0 && strcmp(posicao_b3, "X") == 0) || 
+    (strcmp(posicao_c1, "X") == 0 && strcmp(posicao_c2, "X") == 0 && strcmp(posicao_c3, "X") == 0) || 
+    (strcmp(posicao_a1, "X") == 0 && strcmp(posicao_b1, "X") == 0 && strcmp(posicao_c1, "X") == 0) || 
+    (strcmp(posicao_a2, "X") == 0 && strcmp(posicao_b2, "X") == 0 && strcmp(posicao_c2, "X") == 0) || 
+    (strcmp(posicao_a3, "X") == 0 && strcmp(posicao_b3, "X") == 0 && strcmp(posicao_c3, "X") == 0) || 
+    (strcmp(posicao_a1, "X") == 0 && strcmp(posicao_b2, "X") == 0 && strcmp(posicao_c3, "X") == 0) || 
+    (strcmp(posicao_a3, "X") == 0 && strcmp(posicao_b2, "X") == 0 && strcmp(posicao_c1, "X") == 0)){
+    printf("O XIZINHO GANHOU!");
         break;
     }
     
@@ -108,7 +115,18 @@ int main(){
     else{
         printf("isso não é uma jogada!");
     }
-    
+    if ((strcmp(posicao_a1, "0") == 0 && strcmp(posicao_a2, "0") == 0 && strcmp(posicao_a3, "0") == 0) || 
+    (strcmp(posicao_b1, "0") == 0 && strcmp(posicao_b2, "0") == 0 && strcmp(posicao_b3, "0") == 0) || 
+    (strcmp(posicao_c1, "0") == 0 && strcmp(posicao_c2, "0") == 0 && strcmp(posicao_c3, "0") == 0) || 
+    (strcmp(posicao_a1, "0") == 0 && strcmp(posicao_b1, "0") == 0 && strcmp(posicao_c1, "0") == 0) || 
+    (strcmp(posicao_a2, "0") == 0 && strcmp(posicao_b2, "0") == 0 && strcmp(posicao_c2, "0") == 0) || 
+    (strcmp(posicao_a3, "0") == 0 && strcmp(posicao_b3, "0") == 0 && strcmp(posicao_c3, "0") == 0) || 
+    (strcmp(posicao_a1, "0") == 0 && strcmp(posicao_b2, "0") == 0 && strcmp(posicao_c3, "0") == 0) || 
+    (strcmp(posicao_a3, "0") == 0 && strcmp(posicao_b2, "0") == 0 && strcmp(posicao_c1, "0") == 0)){
+ 
+    printf("A BOLINHA GANHOU!");
+     break;
+    }
     
     }  
     return 0;
