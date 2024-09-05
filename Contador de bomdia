@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+
+ double x, y, z;
+ 
+ printf("Quantos boms-dias você quer?\n");
+ scanf("%lf",&z);
+ 
+ printf("Qual numero você quer que inicie?\n");
+ scanf("%lf",&y);
+ 
+ for(x=y;x<=z;x++){
+     printf("bom-dia %.0lf\n", x);
+ }
+     printf("Fim, acabou!");
+
+    return 0;
+    
+}
