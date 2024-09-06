@@ -15,6 +15,7 @@ int main(){
     char posicao_c3[]=" ";
     char jogada1[]="-";
     int jogada2;
+    int bolinha;
     int jogadas = 0;
     
     printf("BEM-VINDO(A) AO MEU JOGO DA IDOSA, SEMPRE COLOQUE A LETRA NAS LATERAIS ANTES DOS NUMEROS! (ex: a1, b2, c3)\n\n");
@@ -177,16 +178,71 @@ int main(){
         printf("isso não é uma jogada!\n");
         goto menu2;}
     
-    if ((strcmp(posicao_a1, "0") == 0 && strcmp(posicao_a2, "0") == 0 && strcmp(posicao_a3, "0") == 0) || 
-    (strcmp(posicao_b1, "0") == 0 && strcmp(posicao_b2, "0") == 0 && strcmp(posicao_b3, "0") == 0) || 
-    (strcmp(posicao_c1, "0") == 0 && strcmp(posicao_c2, "0") == 0 && strcmp(posicao_c3, "0") == 0) || 
-    (strcmp(posicao_a1, "0") == 0 && strcmp(posicao_b1, "0") == 0 && strcmp(posicao_c1, "0") == 0) || 
-    (strcmp(posicao_a2, "0") == 0 && strcmp(posicao_b2, "0") == 0 && strcmp(posicao_c2, "0") == 0) || 
-    (strcmp(posicao_a3, "0") == 0 && strcmp(posicao_b3, "0") == 0 && strcmp(posicao_c3, "0") == 0) || 
-    (strcmp(posicao_a1, "0") == 0 && strcmp(posicao_b2, "0") == 0 && strcmp(posicao_c3, "0") == 0) || 
-    (strcmp(posicao_a3, "0") == 0 && strcmp(posicao_b2, "0") == 0 && strcmp(posicao_c1, "0") == 0)){
- 
-    printf("A BOLINHA GANHOU!");
+    if(strcmp(posicao_a1, "0") == 0 && strcmp(posicao_a2, "0") == 0 && strcmp(posicao_a3, "0") == 0) {
+        strcpy(posicao_a1, "*");
+        strcpy(posicao_a2, "*");
+        strcpy(posicao_a3, "*");
+        bolinha++;
+        printf("A BOLINHA GANHOU!\n");
+    }
+   else if(strcmp(posicao_b1, "0") == 0 && strcmp(posicao_b2, "0") == 0 && strcmp(posicao_b3, "0") == 0){
+       strcpy(posicao_b1, "*");
+       strcpy(posicao_b2, "*");
+       strcpy(posicao_b3, "*");
+       bolinha++;
+       printf("A BOLINHA GANHOU!\n");
+   }
+    else if(strcmp(posicao_c1, "0") == 0 && strcmp(posicao_c2, "0") == 0 && strcmp(posicao_c3, "0") == 0){
+        strcpy(posicao_c1, "*");
+        strcpy(posicao_c2, "*");
+        strcpy(posicao_c3, "*");
+        bolinha++;
+        printf("A BOLINHA GANHOU!\n");
+    }
+    else if(strcmp(posicao_a1, "0") == 0 && strcmp(posicao_b1, "0") == 0 && strcmp(posicao_c1, "0") == 0){
+        strcpy(posicao_a1, "*");
+        strcpy(posicao_b1, "*");
+        strcpy(posicao_c1, "*");
+        bolinha++;
+        printf("A BOLINHA GANHOU!\n");
+    } 
+    else if(strcmp(posicao_a2, "0") == 0 && strcmp(posicao_b2, "0") == 0 && strcmp(posicao_c2, "0") == 0){
+        strcpy(posicao_a2, "*");
+        strcpy(posicao_b2, "*");
+        strcpy(posicao_c2, "*");
+        bolinha++;
+        printf("A BOLINHA GANHOU!\n");
+    } 
+    else if(strcmp(posicao_a3, "0") == 0 && strcmp(posicao_b3, "0") == 0 && strcmp(posicao_c3, "0") == 0){
+        strcpy(posicao_a3, "*");
+        strcpy(posicao_b3, "*");
+        strcpy(posicao_c3, "*");
+        bolinha++;
+        printf("A BOLINHA GANHOU!\n");
+    }
+    else if(strcmp(posicao_a1, "0") == 0 && strcmp(posicao_b2, "0") == 0 && strcmp(posicao_c3, "0") == 0){
+        strcpy(posicao_a1, "*");
+        strcpy(posicao_b2, "*");
+        strcpy(posicao_c3, "*");
+        bolinha++;
+        printf("A BOLINHA GANHOU!\n");
+     
+    }
+    else if(strcmp(posicao_a3, "0") == 0 && strcmp(posicao_b2, "0") == 0 && strcmp(posicao_c1, "0") == 0){
+        strcpy(posicao_a3, "*");
+        strcpy(posicao_b2, "*");
+        strcpy(posicao_c1, "*");
+        bolinha++;
+        printf("A BOLINHA GANHOU!\n");
+     
+    }
+    if(bolinha == 1){
+         printf("   1   2   3\n");
+    printf("A  %s | %s | %s\n", posicao_a1, posicao_a2, posicao_a3);
+    printf("  -----------\n");
+    printf("B  %s | %s | %s\n", posicao_b1, posicao_b2, posicao_b3);
+    printf("  -----------\n");
+    printf("C  %s | %s | %s\n", posicao_c1, posicao_c2, posicao_c3);
      break;
     }
       jogadas++;
