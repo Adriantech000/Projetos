@@ -45,15 +45,37 @@ scanf("%d", &conti);
 }while(conti == 1);
 
 if(votos1 > votos2 && votos1 > votos3){
+    printf("--------------------------\n");
     printf("O candidato A foi vitorioso!\n");
+    
+    if(votos2 > votos3){
+        printf("O candidato B foi o vice!\n");
+    }
+    else
     printf("--------------------------\n");
 }
-else if(votos2 > votos3 && votos2 > votos1){
+if(votos2 > votos3 && votos2 > votos1){
+    printf("--------------------------\n");
     printf("O candidato B foi vitorioso!\n");
+
+    if(votos1 > votos3){
+        printf("O candidato A foi o vice!\n");
+    }
+    else{
+        printf("O candidato C foi o vice!\n");
+    }
     printf("--------------------------\n");
 }
-else if(votos3 > votos2 && votos3 > votos1){
+if(votos3 > votos2 && votos3 > votos1){
+    printf("--------------------------\n");
     printf("O candidato C foi vitorioso!\n");
+    if(votos2 > votos3){
+        
+        printf("O candidato B foi o vice!\n");
+    }
+    else{
+        printf("O candidato A foi o vice!\n");
+    }
     printf("--------------------------\n");
 }
 
@@ -66,7 +88,7 @@ porcentagemn = (float)votosnull/total*100;
 
 if(porcentagem1>50 || porcentagem2>50 || porcentagem3>50 || porcentagemb>50 || porcentagemn>50){
     printf("Veja as porcentagens!\n Candidato A %.2f%\n Candidato B %.2f%\n Candidato C %.2f%\n Em branco %.2f%\n Nulos %.2f%\n\n", porcentagem1, porcentagem2, porcentagem3, porcentagemb, porcentagemn);
-    printf("--------------------------");
+    printf("--------------------------\n");
     segturn++;
 }
 
