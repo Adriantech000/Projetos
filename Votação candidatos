@@ -9,8 +9,9 @@ int main(){
     int segturn=0;
 
 do{
-
-printf("Quem você quer votar?\n Candidato A - 100\n Candidato B - 123\n Candidato C - 543\n Voto Em branco - 955\n Voto nulo - qualquer outro numero.\n Resposta:");
+printf("--------------------------\n");
+printf("Quem você quer votar?\n Candidato A - 100\n Candidato B - 123\n Candidato C - 543\n Voto Em branco - 955\n Voto nulo - qualquer outro numero.\n");
+printf("--------------------------\nResposta:");
 scanf("%d", &resposta);
 menu:
 
@@ -35,8 +36,9 @@ else{
     printf("Voce votou nulo\n");
     votosnull++;
 }
-
+printf("--------------------------\n");
 printf("Os votos foram:\nCandidato A - %d\nCandidato B - %d\nCandidato C - %d\nVotos em branco - %d\nVotos nulos - %d\n\n", votos1, votos2, votos3, votosbranco, votosnull);
+printf("--------------------------\n");
 printf("Voce quer continuar?\n 1-SIM\n 0-NAO\n resposta:");
 scanf("%d", &conti);
 
@@ -44,12 +46,15 @@ scanf("%d", &conti);
 
 if(votos1 > votos2 && votos1 > votos3){
     printf("O candidato A foi vitorioso!\n");
+    printf("--------------------------\n");
 }
 else if(votos2 > votos3 && votos2 > votos1){
     printf("O candidato B foi vitorioso!\n");
+    printf("--------------------------\n");
 }
 else if(votos3 > votos2 && votos3 > votos1){
     printf("O candidato C foi vitorioso!\n");
+    printf("--------------------------\n");
 }
 
 total = votos1+votos2+votos3+votosbranco+votosnull;
@@ -61,6 +66,7 @@ porcentagemn = (float)votosnull/total*100;
 
 if(porcentagem1>50 || porcentagem2>50 || porcentagem3>50 || porcentagemb>50 || porcentagemn>50){
     printf("Veja as porcentagens!\n Candidato A %.2f%\n Candidato B %.2f%\n Candidato C %.2f%\n Em branco %.2f%\n Nulos %.2f%\n\n", porcentagem1, porcentagem2, porcentagem3, porcentagemb, porcentagemn);
+    printf("--------------------------");
     segturn++;
 }
 
@@ -74,7 +80,8 @@ if(segturn==0){
     votosbranco=0;
     votosnull=0;
     
-    printf("Quem você quer votar?\n Candidato A - 100\n Candidato B - 123\n Candidato C - 543\n Voto Em branco - 955\n Voto nulo - qualquer outro numero.\n Resposta:");
+    printf("Quem você quer votar?\n Candidato A - 100\n Candidato B - 123\n Candidato C - 543\n Voto Em branco - 955\n Voto nulo - qualquer outro numero.\n");
+    printf("--------------------------\n Resposta:");
     scanf("%d", &resposta);
     goto menu;
 
