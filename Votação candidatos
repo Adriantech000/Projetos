@@ -6,14 +6,13 @@ int main(){
     int conti=0;
     int votos1=0, votos2=0, votos3=0, votosbranco=0, votosnull=0, total=0;
     float porcentagem1, porcentagem2, porcentagem3, porcentagemb, porcentagemn;
-
-
+    int segturn=0;
 
 do{
 
 printf("Quem você quer votar?\n Candidato A - 100\n Candidato B - 123\n Candidato C - 543\n Voto Em branco - 955\n Voto nulo - qualquer outro numero.\n Resposta:");
 scanf("%d", &resposta);
-
+menu:
 
 if(resposta == 100){
      printf("Parabens voce votou no candidato A!\n");
@@ -60,7 +59,27 @@ porcentagem3 = (float)votos3/total*100;
 porcentagemb = (float)votosbranco/total*100;
 porcentagemn = (float)votosnull/total*100;
 
-printf("Veja as porcentagens!\n Candidato A %.2f%\n Candidato B %.2f%\n Candidato C %.2f%\n Em branco %.2f%\n Nulos %.2f%\n\n", porcentagem1, porcentagem2, porcentagem3, porcentagemb, porcentagemn);
+if(porcentagem1>50 || porcentagem2>50 || porcentagem3>50 || porcentagemb>50 || porcentagemn>50){
+    printf("Veja as porcentagens!\n Candidato A %.2f%\n Candidato B %.2f%\n Candidato C %.2f%\n Em branco %.2f%\n Nulos %.2f%\n\n", porcentagem1, porcentagem2, porcentagem3, porcentagemb, porcentagemn);
+    segturn++;
+}
+
+if(segturn==0){
+    printf("-------------------------------");
+    printf("voce entrou no segundo turno!\n\n");
+    printf("-------------------------------");
+    votos1=0;
+    votos2=0;
+    votos3=0;
+    votosbranco=0;
+    votosnull=0;
+    
+    printf("Quem você quer votar?\n Candidato A - 100\n Candidato B - 123\n Candidato C - 543\n Voto Em branco - 955\n Voto nulo - qualquer outro numero.\n Resposta:");
+    scanf("%d", &resposta);
+    goto menu;
+
+    
+}
 
 printf("Otimo, tenha um bom dia!\n");
 
