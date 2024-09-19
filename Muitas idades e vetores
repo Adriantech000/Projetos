@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    int qnt, idx;
+    float med=0, soma=0;
+    int dobro=0;
+
+    printf("Fale quantas clientes serão:");
+    scanf("%d", &qnt);
+    float idades[qnt];
+    
+    for(idx=0; idx<qnt; idx++){
+        
+        printf("Digite a idade do cliente %d:\n", idx);
+        scanf("%f", &idades[idx]);
+        if(idades[idx]>130){
+            printf("Voce é velho demais!\n");
+            idx--;
+        }
+    }
+    
+    for(idx=0; idx<qnt; idx++){
+        
+        dobro = idades[idx]*2;
+        printf("====================\n");
+        printf("idade %d: %.2f\nO dobro é : %d\n", idx, idades[idx], dobro);
+        
+    }
+    
