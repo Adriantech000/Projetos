@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    int qnt, idx;
+    float med=0, soma=0;
+
+    printf("Fale quantas notas serão:");
+    scanf("%d", &qnt);
+    float notas[qnt];
+    
+    for(idx=0; idx<qnt; idx++){
+        
+        printf("Digite a nota %d\n", idx);
+        scanf("%f", &notas[idx]);
+        soma = soma + notas[idx];
+    }
+    for(idx=0; idx<qnt; idx++){
+        printf("====================\n");
+        printf("nota %d: %.2f\n", idx, notas[idx]);
+        
+    }
+    
+    med = soma/qnt;
+    printf("====================\n");
+    printf("A media é : %d", med);
+    
+    return 0;
+}
