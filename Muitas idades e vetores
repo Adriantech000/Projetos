@@ -3,27 +3,44 @@
 int main() {
     int qnt, idx;
     float med=0, soma=0;
-    int dobro=0;
 
     printf("Fale quantas clientes serão:");
     scanf("%d", &qnt);
     float idades[qnt];
+    float idades2[qnt];
+    float idades3[qnt*2];
     
     for(idx=0; idx<qnt; idx++){
         
         printf("Digite a idade do cliente %d:\n", idx);
         scanf("%f", &idades[idx]);
+        idades2[idx] = idades[idx];
+        idades2[idx] = idades2[idx]*2;
+        
         if(idades[idx]>130){
             printf("Voce é velho demais!\n");
             idx--;
         }
+ 
     }
     
     for(idx=0; idx<qnt; idx++){
         
-        dobro = idades[idx]*2;
         printf("====================\n");
-        printf("idade %d: %.2f\nO dobro é : %d\n", idx, idades[idx], dobro);
-        
+        printf("idade %d: %.0f\nO dobro é : %.0f\n", idx, idades[idx], idades2[idx]);
+  
     }
-    
+    for(idx=0; idx<qnt; idx++){
+       idades3[idx] = idades[idx];
+       printf("Terceiro[%d] é %.0f\n",idx, idades3[idx]);
+    }
+    int cont = 0;
+    for(idx = cont; idx < qnt*2; idx++){
+        idades3[idx] = idades2[idx];
+        printf("A qnt junta é:");
+        cont++;
+    }
+ 
+  
+    return 0;
+}
