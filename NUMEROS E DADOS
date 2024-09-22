@@ -1,0 +1,33 @@
+
+#include <stdio.h>
+
+int main() {
+    
+    int i, resposta;
+    int num = 0;
+    
+    printf("Qual sera a qnt de numeros?:");
+    scanf("%d", &num);
+    int numeros[num];
+    
+    for(i=0;i<num;i++){
+        
+         printf("Qual sera o valor do numero %d?:", i);
+         scanf("%d", &numeros[i]);
+
+    }
+    
+    i=0;
+    
+    do{
+        
+    printf("numero %d é %d\n", i, numeros[i]);
+        
+    i++;
+    }while(i<num);
+    
+    printf("fim");
+    
+    return 0;
+}
+    
