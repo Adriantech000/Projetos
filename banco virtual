@@ -3,7 +3,7 @@
 int main() {
     
     int decisao;
-    int saldo, deposito, saque;
+    float saldo, deposito, saque;
     int num=1;
     
     do{
@@ -21,9 +21,9 @@ int main() {
          
          case 1:
          printf("Qual será o valor?:");
-         scanf("%d", &deposito);
+         scanf("%f", &deposito);
          saldo = saldo + deposito;
-         printf("seu saldo ficou: %d\n", saldo);
+         printf("seu saldo ficou: %.2f\n", saldo);
          break;
          
          case 2:
@@ -33,14 +33,14 @@ int main() {
          }
          else{
          printf("Qual será o valor?:");
-         scanf("%d", &saque);
+         scanf("%f", &saque);
          saldo = saldo - saque;
-         printf("seu saldo ficou: %d\n", saldo);
+         printf("seu saldo ficou: %.2f\n", saldo);
          break;
          }
          
          case 3:
-         printf("Seu saldo é: %d\n", saldo);
+         printf("Seu saldo é: %f\.2n", saldo);
          break;
          
          case 4:
