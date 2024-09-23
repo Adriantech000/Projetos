@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+int main() {
+    
+    int decisao;
+    int saldo, deposito, saque;
+    int num=1;
+    
+    do{
+    
+     printf("----------------\n");
+     printf("Escolha sua opção!\n");
+     printf("1- Depositar\n");
+     printf("2- Sacar\n");
+     printf("3- Ver saldo\n");
+     printf("4- sair\n");
+     printf("----------------\n");
+     scanf("%d", &decisao);
+     
+     switch(decisao){
+         
+         case 1:
+         printf("Qual será o valor?:");
+         scanf("%d", &deposito);
+         saldo = saldo + deposito;
+         printf("seu saldo ficou: %d\n", saldo);
+         break;
+         
+         case 2:
+         if(saldo<=0){
+            printf(" Seu saldo está zerado ou negativo, não é possivel retirar mais valores!\n");
+            break;
+         }
+         else{
+         printf("Qual será o valor?:");
+         scanf("%d", &saque);
+         saldo = saldo - saque;
+         printf("seu saldo ficou: %d\n", saldo);
+         break;
+         }
+         
+         case 3:
+         printf("Seu saldo é: %d\n", saldo);
+         break;
+         
+         case 4:
+         num = 0;
+         break;
+         
+         
+         
+     }
+       if(decisao>4 || decisao<1){
+         printf("isso não é uma opção!\n");
+       }
+
+    }while(num>0);
+  
+    return 0;
+}
