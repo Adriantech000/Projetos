@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    
+    char resposta[20];
+    
+    printf("hoje, tenho um enigma!\n\nSou mais leve que o ar, mas cem pessoas não podem me levantar. O que sou?\n");
+    fgets(resposta, sizeof(resposta), stdin); 
+
+    resposta[strcspn(resposta, "\n")] = '\0';
+    
+    if( strcmp(resposta, "bolha") == 0){
+        printf("vc acertou!\n");
+    }
+    else if( strcmp(resposta, "uma bolha") == 0){
+        printf("vc acertou!\n");
+    }
+    else if( strcmp(resposta, "bolha de sabao") == 0){
+        printf("vc acertou!\n");
+    }
+    else{
+        printf("respota errada!\n");
+    }
+ 
+
+    return 0;
+}
