@@ -1,0 +1,81 @@
+#include <stdio.h>
+ int soma();
+ int subtrair();
+ void resultado(int resp);
+ void resultadosub(int respsub);
+ 
+int main() {
+
+    int resp=0;
+    int respsub=0;
+    int menu;
+    printf("-------------------\n");
+    printf("oque vc quer fazer?\n");
+    printf("1- somar\n");
+    printf("2- subtarir\n");
+    printf("-------------------\n");
+    scanf("%d", &menu);
+    
+    switch(menu){
+        case 1:
+        printf("-------------------\n");
+        resp = soma();
+        resultado(resp);
+        printf("-------------------\n");
+        break;
+        case 2:
+        printf("-------------------\n");
+        respsub = subtrair();
+        resultadosub(respsub);
+        printf("-------------------\n");
+        break;
+        default:
+        printf("VC É BURRO??\n");
+        break;
+    }
+    
+    
+    return 0;
+}
+
+int soma(){
+    int valor1;
+    int valor2;
+    int resp;
+    printf("SOMA!\n\n");
+    
+    printf("qual o numero 1?");
+    scanf("%d", &valor1);
+    
+    printf("qual o numero 2?");
+    scanf("%d", &valor2);
+    
+    resp = valor1 + valor2;
+    
+    return resp;
+}
+
+int subtrair(){
+    int valorA;
+    int valorB;
+    int respsub;
+    
+    printf("SUBTRAÇÃO!\n\n");
+    
+    printf("qual o numero 1?");
+    scanf("%d", &valorA);
+    
+    printf("qual o numero 2?");
+    scanf("%d", &valorB);
+    
+    respsub = valorA - valorB;
+    
+    return respsub;
+}
+
+void resultado(int resp){
+     printf("a soma deu: %d\n", resp);
+}
+void resultadosub(int respsub){
+     printf("a subtração deu: %d\n", respsub);
+}
