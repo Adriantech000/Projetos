@@ -1,8 +1,7 @@
 #include <stdio.h>
  int soma();
  int subtrair();
- void resultado(int resp);
- void resultadosub(int respsub);
+ void resultado(int resp, int respsub, int menu);
  
 int main() {
 
@@ -20,13 +19,13 @@ int main() {
         case 1:
         printf("-------------------\n");
         resp = soma();
-        resultado(resp);
+        resultado(resp, respsub, menu);
         printf("-------------------\n");
         break;
         case 2:
         printf("-------------------\n");
         respsub = subtrair();
-        resultadosub(respsub);
+        resultado(resp, respsub, menu);
         printf("-------------------\n");
         break;
         default:
@@ -73,9 +72,13 @@ int subtrair(){
     return respsub;
 }
 
-void resultado(int resp){
+void resultado(int resp, int respsub, int menu){
+    switch(menu){
+     case 1:
      printf("a soma deu: %d\n", resp);
-}
-void resultadosub(int respsub){
+     break;
+     case 2:
      printf("a subtração deu: %d\n", respsub);
+     break;
+    }
 }
