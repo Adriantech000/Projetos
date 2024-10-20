@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void lista(int qnt, char itens[][100], char marca[][100], float valor[], int codigo[]);
+void mudar(char itens[][100], char marca[][100], float valor[]);
+
+int main() {
+
+    int qnt = 1; // quantidade de itens, agora um valor fixo maior
+    int codigo[10]; // para o código dos itens
+    char itens[10][100]; // vetor para os produtos
+    char marca[10][100]; // vetor para a marca deles
+    float valor[10]; // o preço
+    int cont; // para contagem dos loops
+    srand(time(NULL)); // geração de números aleatórios
+
+    for (cont = 0; cont < qnt; cont++) {
+        printf("------------------------------------\n");
+        printf("Digite o Nome do item %d:\n", cont + 1);
+        scanf(" %[^\n]", itens[cont]);
+        printf("Digite a marca do item %d:\n", cont + 1);
+        scanf(" %[^\n]", marca[cont]);
+        printf("Qual o valor do item %d:\n", cont + 1);
+        scanf("%f", &valor[cont]);
+        codigo[cont] = rand() % 100; // gera um código aleatório para o item
+
+        getchar();
+    }
+
+    int escolha;
+    do {
+        printf("Menu\n");
+        printf("1 - Ver a lista de itens\n");
+        printf("2 - Alterar algum item\n");
+        printf("3 - Encerrar programa\n");
+        printf("------------------------------------\n");
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                lista(qnt, itens, marca, valor, codigo);
+                break;
+            case 2:
+                mudar(itens, marca, valor);
+                break;
+            case 3:
+                printf("Encerrando o programa...\n");
+                break;
+            default:
+                printf("Escolha inválida! Tente novamente.\n");
+        }
+    } while (escolha != 3);
+
+    return 0;
+}
+
+void lista(int qnt, char itens[][100], char marca[][100], float valor[], int codigo[]) {
+    int cont;
+    for (cont = 0; cont < qnt; cont++) {
+        printf("Item número %d\n", cont + 1);
+        printf("Nome: %s\n", itens[cont]);
+        printf("Marca: %s\n", marca[cont]);
+        printf("Valor: %.2f \n", valor[cont]); 
+        printf("Código: %d\n", codigo[cont]);
+        printf("------------------------------------\n");
+    }
+}
+
+void mudar(char itens[][100], char marca[][100], float valor[]) {
+    int escolha;
+
+    printf("Qual item quer alterar? \nNúmero do item: ");
+    scanf("%d", &escolha);
+
+    escolha = escolha - 1;
+
+    printf("------------------------------------\n");
+    printf("Digite o Nome do item %d:\n", escolha + 1);
+    scanf(" %[^\n]", itens[escolha]);
+    printf("Digite a marca do item %d:\n", escolha + 1);
+    scanf(" %[^\n]", marca[escolha]);
+    printf("Qual o valor do item %d:\n", escolha + 1);
+    scanf("%f", &valor[escolha]);
+
+    getchar(); // Limpa o buffer de entrada
+}
