@@ -5,14 +5,15 @@
 void lista(int qnt, char itens[][100], char marca[][100], float valor[], int codigo[]);
 void mudar(char itens[][100], char marca[][100], float valor[]);
 void adicionar (int *qnt, char itens[][100], char marca[][100], float valor[], int codigo[], int *ultimoiten);
+void remover(int *qnt, char itens[][100], char marca[][100], float valor[], int codigo[], int *ultimoiten);
 
 int main() {
 
     int qnt = 1; // quantidade de itens, agora um valor fixo maior
-    int codigo[10]; // para o código dos itens
-    char itens[10][100]; // vetor para os produtos
-    char marca[10][100]; // vetor para a marca deles
-    float valor[10]; // o preço
+    int codigo[20]; // para o código dos itens
+    char itens[20][100]; // vetor para os produtos
+    char marca[20][100]; // vetor para a marca deles
+    float valor[20]; // o preço
     int cont; // para contagem dos loops
     srand(time(NULL)); // geração de números aleatórios
     int ultimoiten;
@@ -37,7 +38,8 @@ int main() {
         printf("1 - Ver a lista de itens\n");
         printf("2 - Alterar algum item\n");
         printf("3 - Adicionar item\n");
-        printf("4 - Encerrar programa\n");
+        printf("4 - Remover item\n");
+        printf("5 - Encerrar programa\n");
         printf("------------------------------------\n");
         scanf("%d", &escolha);
 
@@ -52,12 +54,15 @@ int main() {
                 adicionar(&qnt, itens, marca, valor, codigo,  &ultimoiten);
                 break;
             case 4:
+                remover(&qnt, itens, marca, valor, codigo,  &ultimoiten);
+                break;
+            case 5:
                 printf("Encerrando o programa...\n");
                 break;
             default:
                 printf("Escolha inválida! Tente novamente.\n");
         }
-    } while (escolha != 4);
+    } while (escolha != 5);
 
     return 0;
 }
@@ -102,7 +107,32 @@ void adicionar (int *qnt, char itens[][100], char marca[][100], float valor[], i
         scanf(" %[^\n]", marca[*ultimoiten]);
         printf("Qual o valor do item %d:\n", *ultimoiten + 1);
         scanf("%f", &valor[*ultimoiten]);
+        
+        codigo[*ultimoiten] = rand() % 100;
         (*ultimoiten)++;
         (*qnt)++;
 }
+void remover(int *qnt, char itens[][100], char marca[][100], float valor[], int codigo[], int *ultimoiten){
+    
+    int escolha;
+    printf("Qual item deseja remover: ");
+    scanf("%d", &escolha);
+    
+    escolha--;
+    
+
+    itens[escolha] = '';
+    marca[escolha] = '';
+    valor[escolha] = '';
+    
+   itens[escolha] = itens[escolha+10];
+   marca[escolha] = marca[escolha+10];
+   valor[escolha] = valor[escolha+10];
+    
+   (*ultimoiten)--;
+   (*qnt)--;
+    
+}
+
+
 
