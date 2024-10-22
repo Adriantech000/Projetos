@@ -3,7 +3,7 @@
 #include <time.h>
 
 void lista(int qnt, char itens[][100], char marca[][100], float valor[], int codigo[]);
-void mudar(char itens[][100], char marca[][100], float valor[]);
+void mudar(char itens[][100], char marca[][100], float valor[], int *qnt);
 void adicionar (int *qnt, char itens[][100], char marca[][100], float valor[], int codigo[], int *ultimoiten);
 void remover(int *qnt, char itens[][100], char marca[][100], float valor[], int codigo[], int *ultimoiten);
 
@@ -48,7 +48,7 @@ int main() {
                 lista(qnt, itens, marca, valor, codigo);
                 break;
             case 2:
-                mudar(itens, marca, valor);
+                mudar(itens, marca, valor, &qnt);
                 break;
             case 3:
                 adicionar(&qnt, itens, marca, valor, codigo,  &ultimoiten);
@@ -79,11 +79,16 @@ void lista(int qnt, char itens[][100], char marca[][100], float valor[], int cod
     }
 }
 
-void mudar(char itens[][100], char marca[][100], float valor[]) {
+void mudar(char itens[][100], char marca[][100], float valor[], int *qnt) {
     int escolha;
 
     printf("Qual item quer alterar? \nNúmero do item: ");
     scanf("%d", &escolha);
+    
+    if (escolha < 0 || escolha >= *qnt) {
+        printf("Número de item inválido!\n");
+        return;
+    }
 
     escolha = escolha - 1;
 
@@ -95,7 +100,7 @@ void mudar(char itens[][100], char marca[][100], float valor[]) {
     printf("Qual o valor do item %d:\n", escolha + 1);
     scanf("%f", &valor[escolha]);
 
-    getchar(); // Limpa o buffer de entrada
+    getchar();
 }
 
 void adicionar (int *qnt, char itens[][100], char marca[][100], float valor[], int codigo[], int *ultimoiten){
@@ -113,21 +118,28 @@ void adicionar (int *qnt, char itens[][100], char marca[][100], float valor[], i
         (*qnt)++;
 }
 void remover(int *qnt, char itens[][100], char marca[][100], float valor[], int codigo[], int *ultimoiten){
-    
+
     int escolha;
     printf("Qual item deseja remover: ");
     scanf("%d", &escolha);
     
+    if (escolha < 0 || escolha >= *qnt+1) {
+        printf("Número de item inválido!\n");
+        return;
+    }
     escolha--;
     
-
-    itens[escolha] = '';
-    marca[escolha] = '';
-    valor[escolha] = '';
+    itens[escolha][0] = '\0';
+    marca[escolha][0] = '\0'; 
+    valor[escolha] = 0.0;    
+    codigo[escolha] = 0;
     
-   itens[escolha] = itens[escolha+10];
-   marca[escolha] = marca[escolha+10];
-   valor[escolha] = valor[escolha+10];
+  for (int j = 0; j < 100; j++) {
+    itens[escolha][j] = itens[escolha + 1][j];
+    marca[escolha][j] = marca[escolha + 1][j];
+    
+  }
+  valor[escolha + 1] = valor[escolha];
     
    (*ultimoiten)--;
    (*qnt)--;
