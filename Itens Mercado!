@@ -1,35 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
-void lista(int qnt, char itens[][100], char marca[][100], float valor[], int codigo[]);
-void mudar(char itens[][100], char marca[][100], float valor[], int *qnt);
-void adicionar (int *qnt, char itens[][100], char marca[][100], float valor[], int codigo[], int *ultimoiten);
-void remover(int *qnt, char itens[][100], char marca[][100], float valor[], int codigo[], int *ultimoiten);
+struct produtos {
+    int codigo[20]; // código dos itens
+    char itens[20][100]; // vetor para os produtos
+    char marca[20][100]; // vetor para as marcas
+    float valor[20]; // preços
+};
+
+void lista(int qnt, struct produtos *ite);
+void mudar(struct produtos *ite, int qnt);
+void adicionar(int *qnt, struct produtos *ite, int *ultimoiten);
+void remover(int *qnt, struct produtos *ite, int *ultimoiten);
 
 int main() {
-
-    int qnt = 1; // quantidade de itens, agora um valor fixo maior
-    int codigo[20]; // para o código dos itens
-    char itens[20][100]; // vetor para os produtos
-    char marca[20][100]; // vetor para a marca deles
-    float valor[20]; // o preço
-    int cont; // para contagem dos loops
+    struct produtos ite;
+    int qnt = 0; // quantidade de itens, começando com 0
+    int ultimoiten = 0; // último item adicionado
     srand(time(NULL)); // geração de números aleatórios
-    int ultimoiten;
+
+    int cont;
+    printf("Quantos itens você deseja adicionar? ");
+    scanf("%d", &qnt);
+    getchar(); // limpar o buffer
 
     for (cont = 0; cont < qnt; cont++) {
         printf("------------------------------------\n");
         printf("Digite o Nome do item %d:\n", cont + 1);
-        scanf(" %[^\n]", itens[cont]);
+        scanf(" %[^\n]", ite.itens[cont]);
         printf("Digite a marca do item %d:\n", cont + 1);
-        scanf(" %[^\n]", marca[cont]);
+        scanf(" %[^\n]", ite.marca[cont]);
         printf("Qual o valor do item %d:\n", cont + 1);
-        scanf("%f", &valor[cont]);
-        codigo[cont] = rand() % 100; // gera um código aleatório para o item
-        ultimoiten = cont + 1;
-
-        getchar();
+        scanf("%f", &ite.valor[cont]);
+        ite.codigo[cont] = rand() % 100; // Gerando código aleatório
+        ultimoiten++;
     }
 
     int escolha;
@@ -45,16 +51,16 @@ int main() {
 
         switch (escolha) {
             case 1:
-                lista(qnt, itens, marca, valor, codigo);
+                lista(ultimoiten, &ite);
                 break;
             case 2:
-                mudar(itens, marca, valor, &qnt);
+                mudar(&ite, ultimoiten);
                 break;
             case 3:
-                adicionar(&qnt, itens, marca, valor, codigo,  &ultimoiten);
+                adicionar(&qnt, &ite, &ultimoiten);
                 break;
             case 4:
-                remover(&qnt, itens, marca, valor, codigo,  &ultimoiten);
+                remover(&qnt, &ite, &ultimoiten);
                 break;
             case 5:
                 printf("Encerrando o programa...\n");
@@ -67,84 +73,74 @@ int main() {
     return 0;
 }
 
-void lista(int qnt, char itens[][100], char marca[][100], float valor[], int codigo[]) {
-    int cont;
-    for (cont = 0; cont < qnt; cont++) {
+void lista(int qnt, struct produtos *ite) {
+    for (int cont = 0; cont < qnt; cont++) {
         printf("Item número %d\n", cont + 1);
-        printf("Nome: %s\n", itens[cont]);
-        printf("Marca: %s\n", marca[cont]);
-        printf("Valor: %.2f \n", valor[cont]); 
-        printf("Código: %d\n", codigo[cont]);
+        printf("Nome: %s\n", ite->itens[cont]);
+        printf("Marca: %s\n", ite->marca[cont]);
+        printf("Valor: %.2f \n", ite->valor[cont]); 
+        printf("Código: %d\n", ite->codigo[cont]);
         printf("------------------------------------\n");
     }
 }
 
-void mudar(char itens[][100], char marca[][100], float valor[], int *qnt) {
+void mudar(struct produtos *ite, int qnt) {
     int escolha;
-
     printf("Qual item quer alterar? \nNúmero do item: ");
     scanf("%d", &escolha);
-    
-    if (escolha < 0 || escolha >= *qnt) {
+
+    if (escolha < 1 || escolha > qnt) {
         printf("Número de item inválido!\n");
         return;
     }
 
-    escolha = escolha - 1;
-
+    escolha--; // Ajusta para índice zero
     printf("------------------------------------\n");
     printf("Digite o Nome do item %d:\n", escolha + 1);
-    scanf(" %[^\n]", itens[escolha]);
+    scanf(" %[^\n]", ite->itens[escolha]);
     printf("Digite a marca do item %d:\n", escolha + 1);
-    scanf(" %[^\n]", marca[escolha]);
+    scanf(" %[^\n]", ite->marca[escolha]);
     printf("Qual o valor do item %d:\n", escolha + 1);
-    scanf("%f", &valor[escolha]);
-
-    getchar();
+    scanf("%f", &ite->valor[escolha]);
 }
 
-void adicionar (int *qnt, char itens[][100], char marca[][100], float valor[], int codigo[], int *ultimoiten){
-    
+void adicionar(int *qnt, struct produtos *ite, int *ultimoiten) {
+    if (*ultimoiten >= 20) {
+        printf("Não é possível adicionar mais itens.\n");
+        return;
+    }
+
     printf("------------------------------------\n");
-        printf("Digite o Nome do item %d:\n", *ultimoiten + 1);
-        scanf(" %[^\n]", itens[*ultimoiten]);
-        printf("Digite a marca do item %d:\n", *ultimoiten + 1);
-        scanf(" %[^\n]", marca[*ultimoiten]);
-        printf("Qual o valor do item %d:\n", *ultimoiten + 1);
-        scanf("%f", &valor[*ultimoiten]);
-        
-        codigo[*ultimoiten] = rand() % 100;
-        (*ultimoiten)++;
-        (*qnt)++;
+    printf("Digite o Nome do item %d:\n", *ultimoiten + 1);
+    scanf(" %[^\n]", ite->itens[*ultimoiten]);
+    printf("Digite a marca do item %d:\n", *ultimoiten + 1);
+    scanf(" %[^\n]", ite->marca[*ultimoiten]);
+    printf("Qual o valor do item %d:\n", *ultimoiten + 1);
+    scanf("%f", &ite->valor[*ultimoiten]);
+    ite->codigo[*ultimoiten] = rand() % 100; // Gerar código aleatório
+    (*ultimoiten)++;
 }
-void remover(int *qnt, char itens[][100], char marca[][100], float valor[], int codigo[], int *ultimoiten){
 
+void remover(int *qnt, struct produtos *ite, int *ultimoiten) {
     int escolha;
-    printf("Qual item deseja remover: ");
+    printf("Qual item deseja remover? ");
     scanf("%d", &escolha);
-    
-    if (escolha < 0 || escolha >= *qnt+1) {
+
+    if (escolha < 1 || escolha > *ultimoiten) {
         printf("Número de item inválido!\n");
         return;
     }
-    escolha--;
-    
-    itens[escolha][0] = '\0';
-    marca[escolha][0] = '\0'; 
-    valor[escolha] = 0.0;    
-    codigo[escolha] = 0;
-    
-  for (int j = 0; j < 100; j++) {
-    itens[escolha][j] = itens[escolha + 1][j];
-    marca[escolha][j] = marca[escolha + 1][j];
-    
-  }
-  valor[escolha + 1] = valor[escolha];
-    
-   (*ultimoiten)--;
-   (*qnt)--;
-    
+
+    escolha--; // Ajusta para índice zero
+
+    // Move os itens para preencher o espaço vazio
+    for (int j = escolha; j < *ultimoiten - 1; j++) {
+        strcpy(ite->itens[j], ite->itens[j + 1]); 
+        strcpy(ite->marca[j], ite->marca[j + 1]);
+        ite->valor[j] = ite->valor[j + 1];
+        ite->codigo[j] = ite->codigo[j + 1];
+    }
+
+    (*ultimoiten)--; // Reduz o número total de itens
+    printf("Item removido com sucesso.\n");
 }
-
-
-
