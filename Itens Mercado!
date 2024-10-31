@@ -2,41 +2,27 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-
+struct modelos{
+    char marca[100];
+    char modelo[100];
+};
 struct produtos {
-    int codigo[20]; // código dos itens
-    char itens[20][100]; // vetor para os produtos
-    char marca[20][100]; // vetor para as marcas
-    float valor[20]; // preços
+    int codigo; // código dos itens
+    char itens[100]; // nome dos produtos // marca dos produtos
+    float valor; // preços
+    struct modelos info;
 };
 
-void lista(int qnt, struct produtos *ite);
-void mudar(struct produtos *ite, int qnt);
-void adicionar(int *qnt, struct produtos *ite, int *ultimoiten);
-void remover(int *qnt, struct produtos *ite, int *ultimoiten);
+void lista(int qnt, struct produtos ite[]);
+void mudar(struct produtos ite[], int qnt);
+void adicionar(int *qnt, struct produtos ite[], int *ultimoiten);
+void remover(int *qnt, struct produtos ite[], int *ultimoiten);
 
 int main() {
-    struct produtos ite;
+    struct produtos ite[20];
     int qnt = 0; // quantidade de itens, começando com 0
     int ultimoiten = 0; // último item adicionado
     srand(time(NULL)); // geração de números aleatórios
-
-    int cont;
-    printf("Quantos itens você deseja adicionar? ");
-    scanf("%d", &qnt);
-    getchar(); // limpar o buffer
-
-    for (cont = 0; cont < qnt; cont++) {
-        printf("------------------------------------\n");
-        printf("Digite o Nome do item %d:\n", cont + 1);
-        scanf(" %[^\n]", ite.itens[cont]);
-        printf("Digite a marca do item %d:\n", cont + 1);
-        scanf(" %[^\n]", ite.marca[cont]);
-        printf("Qual o valor do item %d:\n", cont + 1);
-        scanf("%f", &ite.valor[cont]);
-        ite.codigo[cont] = rand() % 100; // Gerando código aleatório
-        ultimoiten++;
-    }
 
     int escolha;
     do {
@@ -51,16 +37,16 @@ int main() {
 
         switch (escolha) {
             case 1:
-                lista(ultimoiten, &ite);
+                lista(ultimoiten, ite);
                 break;
             case 2:
-                mudar(&ite, ultimoiten);
+                mudar(ite, ultimoiten);
                 break;
             case 3:
-                adicionar(&qnt, &ite, &ultimoiten);
+                adicionar(&qnt, ite, &ultimoiten);
                 break;
             case 4:
-                remover(&qnt, &ite, &ultimoiten);
+                remover(&qnt, ite, &ultimoiten);
                 break;
             case 5:
                 printf("Encerrando o programa...\n");
@@ -73,18 +59,19 @@ int main() {
     return 0;
 }
 
-void lista(int qnt, struct produtos *ite) {
+void lista(int qnt, struct produtos ite[]) {
     for (int cont = 0; cont < qnt; cont++) {
         printf("Item número %d\n", cont + 1);
-        printf("Nome: %s\n", ite->itens[cont]);
-        printf("Marca: %s\n", ite->marca[cont]);
-        printf("Valor: %.2f \n", ite->valor[cont]); 
-        printf("Código: %d\n", ite->codigo[cont]);
+        printf("Nome: %s\n", ite[cont].itens);
+        printf("Modelo: %s\n", ite[cont].info.modelo);
+        printf("Marca: %s\n", ite[cont].info.marca);
+        printf("Valor: %.2f \n", ite[cont].valor);
+        printf("Código: %d\n", ite[cont].codigo);
         printf("------------------------------------\n");
     }
 }
 
-void mudar(struct produtos *ite, int qnt) {
+void mudar(struct produtos ite[], int qnt) {
     int escolha;
     printf("Qual item quer alterar? \nNúmero do item: ");
     scanf("%d", &escolha);
@@ -97,14 +84,16 @@ void mudar(struct produtos *ite, int qnt) {
     escolha--; // Ajusta para índice zero
     printf("------------------------------------\n");
     printf("Digite o Nome do item %d:\n", escolha + 1);
-    scanf(" %[^\n]", ite->itens[escolha]);
+    scanf(" %[^\n]", ite[escolha].itens);
+    printf("Digite o modelo do item %d: \n", escolha + 1);
+    scanf(" %[^\n]", ite[escolha].info.modelo);
     printf("Digite a marca do item %d:\n", escolha + 1);
-    scanf(" %[^\n]", ite->marca[escolha]);
+    scanf(" %[^\n]", ite[escolha].info.marca);
     printf("Qual o valor do item %d:\n", escolha + 1);
-    scanf("%f", &ite->valor[escolha]);
+    scanf("%f", &ite[escolha].valor);
 }
 
-void adicionar(int *qnt, struct produtos *ite, int *ultimoiten) {
+void adicionar(int *qnt, struct produtos ite[], int *ultimoiten) {
     if (*ultimoiten >= 20) {
         printf("Não é possível adicionar mais itens.\n");
         return;
@@ -112,16 +101,19 @@ void adicionar(int *qnt, struct produtos *ite, int *ultimoiten) {
 
     printf("------------------------------------\n");
     printf("Digite o Nome do item %d:\n", *ultimoiten + 1);
-    scanf(" %[^\n]", ite->itens[*ultimoiten]);
+    scanf(" %[^\n]", ite[*ultimoiten].itens);
+    printf("Digite o modelo do item %d: \n",*ultimoiten + 1);
+    scanf(" %[^\n]", ite[*ultimoiten].info.modelo);
     printf("Digite a marca do item %d:\n", *ultimoiten + 1);
-    scanf(" %[^\n]", ite->marca[*ultimoiten]);
+    scanf(" %[^\n]", ite[*ultimoiten].info.marca);
     printf("Qual o valor do item %d:\n", *ultimoiten + 1);
-    scanf("%f", &ite->valor[*ultimoiten]);
-    ite->codigo[*ultimoiten] = rand() % 100; // Gerar código aleatório
+    scanf("%f", &ite[*ultimoiten].valor);
+    ite[*ultimoiten].codigo = rand() % 100; // Gerar código aleatório
     (*ultimoiten)++;
+    (*qnt)++; // Aumenta a quantidade de itens
 }
 
-void remover(int *qnt, struct produtos *ite, int *ultimoiten) {
+void remover(int *qnt, struct produtos ite[], int *ultimoiten) {
     int escolha;
     printf("Qual item deseja remover? ");
     scanf("%d", &escolha);
@@ -135,12 +127,10 @@ void remover(int *qnt, struct produtos *ite, int *ultimoiten) {
 
     // Move os itens para preencher o espaço vazio
     for (int j = escolha; j < *ultimoiten - 1; j++) {
-        strcpy(ite->itens[j], ite->itens[j + 1]); 
-        strcpy(ite->marca[j], ite->marca[j + 1]);
-        ite->valor[j] = ite->valor[j + 1];
-        ite->codigo[j] = ite->codigo[j + 1];
+        ite[j] = ite[j + 1]; // Copia o próximo item para o espaço atual
     }
 
     (*ultimoiten)--; // Reduz o número total de itens
+    (*qnt)--; // Reduz a quantidade de itens
     printf("Item removido com sucesso.\n");
 }
