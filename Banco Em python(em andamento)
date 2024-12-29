@@ -1,0 +1,43 @@
+import os
+
+def menu():
+    os.system('cls')
+    saldo = 100
+    # Solicita a idade do usuário
+    idade = int(input("Qual sua idade?\n"))
+    
+    # Se a idade for menor que 18, termina o programa
+    if idade < 18:
+        print("Você é novo(a) demais para usar nosso banco.")
+        exit()  # Encerra o programa se a idade for menor que 18
+    else:
+        # Loop principal do menu
+        while True:
+            # Exibe o menu
+            os.system('cls')
+            print("Bem-vindo(a) ao banco LIPEMONEY\n")
+            print("1. Mostrar Saldo")
+            print("2. Depositar")
+            print("3. Sacar (em desenvolvimento)")
+            print("4. Investir (em desenvolvimento)")
+            print("5. Sair")
+            
+            # Solicita a escolha do usuário
+            escolha = int(input("Escolha uma opção: "))
+            
+            if escolha == 1:
+                os.system('cls')
+                print(f"\nSeu saldo é : {saldo}\n")
+                esc = int(input("Digite 1 para voltar ao menu: "))
+             
+       
+            if escolha == 2:
+                os.system('cls')
+                quant = int(input("Quanto quer adicionar?"))
+                saldo = saldo + quant
+                print("Saldo adicionado com sucesso!")
+                esc = int(input("Digite 1 para voltar ao menu: "))
+
+            
+            
+menu()
