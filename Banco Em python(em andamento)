@@ -3,8 +3,10 @@ import os
 def menu():
     os.system('cls')
     saldo = 100
+    tempo = 0
+    num = 0
     # Solicita a idade do usuário
-    idade = int(input("Qual sua idade?\n"))
+    idade = int(input("Qual sua idade: "))
     
     # Se a idade for menor que 18, termina o programa
     if idade < 18:
@@ -18,26 +20,69 @@ def menu():
             print("Bem-vindo(a) ao banco LIPEMONEY\n")
             print("1. Mostrar Saldo")
             print("2. Depositar")
-            print("3. Sacar (em desenvolvimento)")
+            print("3. Sacar")
             print("4. Investir (em desenvolvimento)")
             print("5. Sair")
-            
             # Solicita a escolha do usuário
             escolha = int(input("Escolha uma opção: "))
             
             if escolha == 1:
                 os.system('cls')
-                print(f"\nSeu saldo é : {saldo}\n")
+                print(f"\nSeu saldo é: R$ {saldo:.2f}\n")
                 esc = int(input("Digite 1 para voltar ao menu: "))
              
-       
             if escolha == 2:
                 os.system('cls')
-                quant = int(input("Quanto quer adicionar?"))
+                quant = int(input("Quanto quer adicionar: R$ "))
                 saldo = saldo + quant
                 print("Saldo adicionado com sucesso!")
                 esc = int(input("Digite 1 para voltar ao menu: "))
 
-            
-            
+            if escolha == 3:
+                os.system('cls')
+                quant = int(input("Quanto você quer sacar: R$ "))
+                if quant <= saldo:
+                    saldo = saldo - quant
+                    print("Saque realizado com sucesso!")
+                else:
+                    print("Saldo insuficiente!")
+                esc = int(input("Digite 1 para voltar ao menu: "))
+
+            if escolha == 4:
+                # Cálculo do investimento
+                os.system('cls')
+                invest = float(input("Digite o valor investido: R$ "))
+                print("1. Fundos Imobiliários (10% por mês)")
+                print("2. Ações Lipes (2% por mês)")
+                esc = int(input("Qual investimento você escolhe? "))
+                os.system('cls')
+                tempo = int(input("Quanto tempo (em meses) você deseja investir? "))
+
+                if esc == 1:
+                    investido_atual = invest
+                    while num < tempo:
+                        juros = investido_atual * (10 / 100)  # 10% de juros
+                        investido_atual += juros  # Atualiza o valor investido
+                        num += 1
+                    saldo += investido_atual  # Adiciona o valor final do investimento ao saldo
+                    os.system('cls')
+                    print(f"Após {tempo} meses, o valor investido foi de R$ {investido_atual:.2f}.")
+                elif esc == 2:
+                    investido_atual = invest
+                    while num < tempo:
+                        juros = investido_atual * (2 / 100)  # 2% de juros
+                        investido_atual += juros  # Atualiza o valor investido
+                        num += 1
+                    saldo += investido_atual  # Adiciona o valor final do investimento ao saldo
+                    os.system('cls')
+                    print(f"Após {tempo} meses, o valor investido foi de R$ {investido_atual:.2f}.")
+                else:
+                    print("Opção de investimento inválida!")
+                
+                esc = int(input("Digite 1 para voltar ao menu: "))
+
+            if escolha == 5:
+                print("Saindo do banco. Até logo!")
+                exit()
+
 menu()
